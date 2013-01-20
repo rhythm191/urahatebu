@@ -1,4 +1,4 @@
-Urahatena::Application.routes.draw do
+Urahatebu::Application.routes.draw do
 
   root :to => redirect('/reader/hotentry')
   match 'reader(/:type)' => 'reader#index', :default => {:type => 'hotentry'} 

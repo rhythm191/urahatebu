@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Urahatena::Application.load_tasks
+Urahatebu::Application.load_tasks
