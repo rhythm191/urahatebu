@@ -1,0 +1,44 @@
+<div id="content" class="centered">
+  <div id="header">
+    <h1>うらはてぶ</h1>
+
+  </div>
+
+  <div id="nav">
+    <ul>
+      <li><a href="/reader/hotentry">人気</a></li>
+      <li><a href="/reader/entrylist">新着総合</a></li>
+      <li><a href="/reader/social">世の中</a></li>
+      <li><a href="/reader/economics">政治と経済</a></li>
+      <li><a href="/reader/life">生活</a></li>
+      <li><a href="/reader/knowledge">学び</a></li>
+      <li><a class="longtext" href="/reader/it">テクノロジー</a></li>
+      <li><a href="/reader/entertainment">エンタメ</a></li>
+      <li><a class="longtext" href="/reader/game">アニメ・ゲーム</a></li>
+      <li><a href="/reader/fun">おもしろ</a></li>
+    </ul>
+  </div>
+
+  <div id="wrapper">
+
+    <% @feeds.each do |feed| %>
+    <div class="feed">
+      <div class="title">
+        <%= link_to feed.title, feed.link, {:target => "_blank"} %>
+      </div>
+      <div class="supplement">
+        <div class="row container">
+          <div class="half">
+            <div class="row container">
+              <div class="bcount third"><span class="mocklink red"><%= feed.bcount %> users</span></div>
+              <div class="subject third"><%= feed.subject %></div>
+              <div class="date third"><%= feed.marked %></div>   
+            </div>
+          </div>
+        </div>
+        <div class="description"><%= feed.description %></div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

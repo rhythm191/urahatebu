@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>うらはてぶ</title>
+  <%= stylesheet_link_tag    "/stylesheets/kube.min.css", :media => "all" %>
+  <%= stylesheet_link_tag    "reader", :media => "all" %>
+  <%= javascript_include_tag "reader" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<div id="header">
+	<div class="row">
+		<div class="half centered">product by <a href="https://twitter.com/maneater_rhythm">@maneater_rhythm</a></div>
+	</div>
+</div>
+</body>
+</html>
