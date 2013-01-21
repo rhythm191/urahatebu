@@ -1,7 +1,8 @@
 Urahatebu::Application.routes.draw do
 
-  root :to => redirect('/reader/hotentry')
-  match 'reader(/:type)' => 'reader#index', :default => {:type => 'hotentry'} 
+  root :to => redirect('/reader/hotentry/index')
+  match 'reader/index' => 'reader#index', :type => 'hotentry'
+  match 'reader/:type/index' => 'reader#index'
 
   match 'reader/new' => 'reader#new'
 
