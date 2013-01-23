@@ -4,7 +4,7 @@ Urahatebu::Application.routes.draw do
   match 'reader/index' => 'reader#index', :type => 'hotentry'
   match 'reader/:type/index' => 'reader#index'
 
-  match 'reader/new' => 'reader#new'
+  match 'reader/:type/create' => 'reader#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

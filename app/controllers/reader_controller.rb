@@ -1,12 +1,20 @@
+# -*- coding: utf-8 -*-
 require "net/http"
 require "uri"
 
 class ReaderController < ApplicationController
   protect_from_forgery
 
-  
-	def index
+  def index
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @feeds }
+    end
+  end
 
+
+  def create
     feedUrl = {
       :hotentry => "http://feeds.feedburner.com/hatena/b/hotentry",
       :entrylist => "http://b.hatena.ne.jp/entrylist?mode=rss",
@@ -20,28 +28,19 @@ class ReaderController < ApplicationController
       :fun => "http://b.hatena.ne.jp/entrylist/fun?mode=rss"
     }
 
+    render :file => "#{RAILS_ROOT}/public/404.html", :status => '404 Not Found' unless feedUrl.key?(params[:type])
+
     url = feedUrl[params[:type].to_sym]
     uri = URI.parse(url)
 
-    # Shortcut
+    # rss のレスポンスを取得する
     response = Net::HTTP.get_response(uri)
 
-    #Net::HTTP.get_print(uri)
-
-    @feeds = Feed.parse(response.body)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @feeds }
+    Feed.parse(response.body).each do |f|
+      f.type = params[:type]
+      f.save
     end
-	end
 
-	def new
-    @memo = Feed.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @feed }
-    end
+    render :nothing => true
   end
 end

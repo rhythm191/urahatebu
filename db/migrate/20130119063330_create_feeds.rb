@@ -3,6 +3,7 @@ class CreateFeeds < ActiveRecord::Migration
     create_table :feeds do |t|
       t.string :title
       t.string :link, :unique => true
+      t.string :category
       t.text :description
       t.string :subject
       t.date :marked

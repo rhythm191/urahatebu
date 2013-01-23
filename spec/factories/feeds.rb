@@ -6,6 +6,7 @@ FactoryGirl.define do
   factory :feed do
     title "Hoge"
     link "http://test.example.com/hoge.html"
+    category "hotentry"
     description "HogeHuga"
     subject "test"
     marked "2013-01-19"
@@ -15,6 +16,7 @@ FactoryGirl.define do
   factory :testFeeds, class: Feed do
   	title { FactoryGirl.generate(:sequence_feed) }
   	link { "http://test.example.com/#{title}.html" }
+    category "hotentry"
   	description { "this is #{title}" }
   	subject "test"
   	marked "2013-01-19"

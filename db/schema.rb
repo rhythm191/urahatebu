@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20130119063330) do
   create_table "feeds", :force => true do |t|
     t.string   "title"
     t.string   "link"
+    t.string   "category"
     t.text     "description"
     t.string   "subject"
     t.date     "marked"

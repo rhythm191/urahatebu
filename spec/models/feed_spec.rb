@@ -30,13 +30,13 @@ describe Feed do
     end
   
     context 'give valid attributes' do
-      subject { Feed.new(title: 'huga', link: 'http://test.example.com/huga.html', description: 'hugahuga', subject: 'test', marked: Time.now, bcount: 3) }
+      subject { Feed.new(title: 'huga', link: 'http://test.example.com/huga.html', category: 'hotentry',  description: 'hugahuga', subject: 'test', marked: Time.now, bcount: 3) }
   	  it { should be_valid }
   	end
   end
 
   describe '.parse' do
-  	subject { Feed.parse(File.new('./spec/rss/rss.xml')) }
+  	subject { Feed.parse(File.new('./spec/rss/rss.xml'), 'hotentry') }
     it { should have(30).items }
   end
 end
